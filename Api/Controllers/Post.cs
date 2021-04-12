@@ -14,26 +14,24 @@ namespace Api.Controllers
     public class Post : Controller
     {
 
-
-    }
- 
-    [System.Web.Http.HttpPost]
-    public Reply Register([FromBody] Models.Solicitudes.usuario model)
-    {
-        Reply oReply = new Reply();
-        using (Models.practicantesEntities1 practicantes = new Models.practicantesEntities1())
+        [System.Web.Http.HttpPost]
+        public Reply Register([FromBody] Models.Solicitudes.usuario model)
         {
-            Models.Persona_Jorge ousuario = new Models.Persona_Jorge();
-            ousuario.Nombres = model.Nombres;
-            ousuario.ApellidoP = model.ApellidoP;
-            ousuario.ApellidoM = model.ApellidoM;
-            ousuario.Direccion = model.Direccion;
-            ousuario.Telefono = model.Telefono;
-            ousuario.Estatus = model.Estatus;
+            Reply oReply = new Reply();
+            using (Models.practicantesEntities1 practicantes = new Models.practicantesEntities1())
+            {
+                Models.Persona_Jorge ousuario = new Models.Persona_Jorge();
+                ousuario.Nombres = model.Nombres;
+                ousuario.ApellidoP = model.ApellidoP;
+                ousuario.ApellidoM = model.ApellidoM;
+                ousuario.Direccion = model.Direccion;
+                ousuario.Telefono = model.Telefono;
+                ousuario.Estatus = model.Estatus;
 
-            practicantes.Persona_Jorge.Add(ousuario);
-            practicantes.SaveChanges();
+                practicantes.Persona_Jorge.Add(ousuario);
+                practicantes.SaveChanges();
+            }
+            return oReply;
         }
-        return oReply;
     }
 }
